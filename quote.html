@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Get A Quote - Mbandasa</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #020617, #0f172a);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .quote-section {
+            padding: 100px 0;
+        }
+
+        .quote-form {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            animation: slideUp 1s ease;
+        }
+
+        /* FIXED TEXT VISIBILITY */
+        .quote-form h2 {
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 32px;
+        }
+
+        .quote-form p {
+            color: #cbd5f5;
+            margin-bottom: 30px;
+        }
+
+        /* INPUTS */
+        .form-control {
+            background: #020617;
+            border: 1px solid #475569;
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .form-control::placeholder {
+            color: #94a3b8;
+        }
+
+        .form-control:focus {
+            border-color: #f97316;
+            box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+        }
+
+        /* BUTTON */
+        .btn-primary {
+            background: linear-gradient(45deg, #f97316, #ea580c);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.5);
+        }
+
+        /* ANIMATION */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* WHATSAPP FLOAT */
+        .whatsapp-float-quote {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25D366;
+            color: white;
+            font-size: 28px;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container quote-section">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+                <div class="quote-form">
+                    <h2>Request a Quote</h2>
+                    <p>Fill in the details below and our team will get back to you.</p>
+
+                    <!-- ✅ FIXED FORM -->
+                    <form onsubmit="sendToWhatsApp(); return false;">
+
+                        <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+
+                        <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+
+                        <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required>
+
+                        <select name="service" class="form-control" required>
+                            <option value="">Select Service</option>
+                            <option>Building Construction</option>
+                            <option>Civil & Structual Engineering</option>
+                            <option>Estimations & BOQS</option>
+                            <option>Electrical & Mechanical Work</option>
+                            <option>Architectual Interior Design</option>
+                        </select>
+
+                        <textarea name="message" class="form-control" rows="4" placeholder="Project Details"></textarea>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Send via WhatsApp
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/254798168642" class="whatsapp-float-quote" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- WhatsApp Script -->
+    <script>
+        function sendToWhatsApp() {
+            let name = document.querySelector('[name="name"]').value;
+            let email = document.querySelector('[name="email"]').value;
+            let phone = document.querySelector('[name="phone"]').value;
+            let service = document.querySelector('[name="service"]').value;
+            let message = document.querySelector('[name="message"]').value;
+
+            let whatsappMessage =
+                "Hello Mbandasa Limited,%0A%0A" +
+                "I would like to request a quote:%0A%0A" +
+                "👤 Name: " + name + "%0A" +
+                "📧 Email: " + email + "%0A" +
+                "📞 Phone: " + phone + "%0A" +
+                "🏗 Service: " + service + "%0A" +
+                "📝 Details: " + message;
+
+            let url = "https://wa.me/254798168642?text=" + whatsappMessage;
+
+            window.open(url, "_blank");
+        }
+    </script>
+
+</body>
+
+</html>
