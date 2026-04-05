@@ -3870,5 +3870,53 @@ body {
 
 /* highlight active testimonial */
 .testimonial .slick-current .slider-item {
+
+    /* Bad for mobile */
+    .container {
+        width: 800px;
+    }
+
+    /* Good for mobile */
+    .container {
+        width: 90%;
+        /* 90% of the screen width */
+        max-width: 1200px;
+        /* limits width on desktop */
+        margin: 0 auto;
+        /* centers container */
+    }
+
     transform: scale(1.05);
+}
+
+img {
+    max-width: 100%;
+    /* image will not exceed container width */
+    height: auto;
+    /* maintain aspect ratio */
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    /* allows items to stack on small screens */
+    justify-content: space-between;
+}
+
+/* Styles for devices smaller than 768px (phones) */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        /* stack menu items vertically */
+    }
+
+    .content {
+        padding: 10px;
+        /* smaller padding on mobile */
+    }
+
+    h1 {
+        font-size: 24px;
+        /* smaller heading on phone */
+    }
 }
